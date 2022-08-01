@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar App Vanilla JS</title>
+
+    <link rel="stylesheet" href="style.css">
+
+
+  </head>
+  <body>
+    
+    <div id="container">
+      <div id="header">
+        <div id="monthDisplay"></div>
+        <div>
+          <button id="backButton" >上個月</button>
+          <button id="nextButton">下個月</button>
+          <button id="dayNull" onclick="dayNull()" >取消編輯</button>
+        </div>
+      </div>
+
+      <div id="weekdays">
+        
+        <div>星期一</div>
+        <div>星期二</div>
+        <div>星期三</div>
+        <div>星期四</div>
+        <div>星期五</div>
+        <div>星期六</div>
+        <div>星期日</div>
+      </div>
+
+      <div id="calendar"></div>
+    </div>
+
+    <div id="newEventModal">
+      <h2>新增事件</h2>
+
+      <input id="eventTitleInput" placeholder="事件標題" />
+
+      <button id="saveButton">儲存</button>
+      <button id="cancelButton">取消</button>
+    </div>
+
+    <div id="deleteEventModal">
+      <h2>Event</h2>
+
+      <p id="eventText"></p>
+
+      <button id="deleteButton">刪除</button>
+      <button id="closeButton">關閉</button>
+    </div>
+
+    <div id="modalBackDrop"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
