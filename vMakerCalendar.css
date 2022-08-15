@@ -15,31 +15,16 @@ button {
   color: white;
 }
 
-.arrow {
-  border: solid #ED8500;
-  border-width: 0px 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-.right {
-  transform: rotate(-45deg);
-}
-
-.left {
-  transform: rotate(135deg);
-}
-
 #header {
   padding: 10px;
-  color: black;
+  color: #d36c6c;
   font-size: 26px;
   font-family: sans-serif;
   display: flex;
   justify-content: space-between;
 }
 .header-button {
-  background-color:#ede4d4 ;
+  background-color:#92a1d1 ;
 }
 #container {
   width: 770px;
@@ -49,19 +34,10 @@ button {
   width: 100%;
   display: flex;
   color: #247BA0;
-  
-  background: #cb842e ;
-  color: #ffffff;
-    
 }
 #weekdays div {
-  width: 110px;
-  /* padding: 10px;
-  border-style: solid;
-  border-width: 1px; */
-  vertical-align: top;
-  text-align: center;
-  border: 1px solid #d49768;
+  width: 100px;
+  padding: 10px;
 }
 #calendar {
   width: 100%;
@@ -80,18 +56,17 @@ button {
   pointer-events: none;
 }
 .day {
-  width: 110px;
+  width: 100px;
   padding: 10px;
   height: 100px;
   cursor: pointer;
   box-sizing: border-box;
   background-color: #F5F1EE;
-  /* margin: 5px; */
+  margin: 5px;
   box-shadow: 0px 0px 3px #CBD4C2;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid #e0cfc2;
 }
 .day:hover {
   background-color: #F2D78A;
@@ -141,19 +116,6 @@ button {
   box-shadow: 0px 0px 3px gray;
 }
 #eventTitleInput.error {
-  border: 2px solid red;
-}
-#eventTitleUrl{
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 25px;
-  border-radius: 3px;
-  outline: none;
-  border: none;
-  box-shadow: 0px 0px 3px gray;
-}
-#eventTitleUrl.error{
   border: 2px solid red;
 }
 #cancelButton, #deleteButton {

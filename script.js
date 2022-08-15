@@ -7,7 +7,9 @@ const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
+const eventTitleUrl = document.getElementById('eventTitleUrl');
 const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 
 
 function openModal(date) {
@@ -51,7 +53,8 @@ function load() {
   const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
   document.getElementById('monthDisplay').innerText = 
-    `${dt.toLocaleDateString('zh-tw', { month: 'long' })} ${year}`;
+    // `${dt.toLocaleDateString('zh-tw', { month: 'long' })} ${year}`;
+    ` ${year} ${dt.toLocaleDateString('zh-tw', { month: 'long' })}`;
 
   calendar.innerHTML = '';
 
@@ -102,17 +105,29 @@ function closeModal() {
 function saveEvent() {
   if (eventTitleInput.value) {
     eventTitleInput.classList.remove('error');
+    
 
     events.push({
       date: clicked,
       title: eventTitleInput.value,
+      url: eventTitleUrl.value,
+      
     });
+
+    
+
+    
+
+
 
     localStorage.setItem('events', JSON.stringify(events));
     closeModal();
   } else {
     eventTitleInput.classList.add('error');
+    
   }
+
+
 }
 
 function deleteEvent() {
@@ -133,8 +148,10 @@ function dayNull() {
   var t = document.getElementById("dayNull");
   if (t.innerHTML == "取消編輯") {
     t.innerHTML = "編輯";
+    t.style.backgroundColor = "#666";
   } else if (t.innerHTML == "編輯") {
     t.innerHTML = "取消編輯";
+    t.style.backgroundColor = "#d36c6c";
   }
    
 }
