@@ -1,3 +1,60 @@
+<div class="all-Cal">
+<div id="container">
+    <div id="header">
+      <div id="monthDisplay"></div>
+      <div>
+        <button class="header-button " id="backButton" >
+          <i class="arrow left"></i>
+        </button>
+        <button class="header-button"  id="nextButton">
+          <i class="arrow right"></i>
+        </button>
+        <!-- <button id="dayNull" onclick="dayNull()" >取消編輯</button> -->
+      </div>
+    </div>
+
+    <div id="weekdays">
+      
+      <div>週一</div>
+      <div>週二</div>
+      <div>週三</div>
+      <div>週四</div>
+      <div>週五</div>
+      <div>週六</div>
+      <div>週日</div>
+    </div>
+
+    <div id="calendar"></div>
+  </div>
+
+  <div id="newEventModal">
+    <h2>新增事件</h2>
+
+    <input id="eventTitleInput" placeholder="事件標題" />
+    <input id="eventTitleUrl" placeholder="連結" />
+
+
+    <button id="saveButton">儲存</button>
+    <button id="cancelButton">取消</button>
+  </div>
+
+  <div id="deleteEventModal">
+    <h2>事件</h2>
+
+    
+      <p id="eventText"></p>
+    
+
+    <button id="deleteButton">刪除</button>
+    <button id="closeButton">關閉</button>
+  </div>
+
+  <div id="modalBackDrop"></div>
+
+</div>
+
+  <script>
+
 let nav = 0;
 let clicked = null;
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
@@ -31,6 +88,7 @@ function openModal(date) {
 function load() {
   
   const dt = new Date();
+
 
   if (nav !== 0) {
     dt.setMonth(new Date().getMonth() + nav);
@@ -89,6 +147,7 @@ function load() {
 }
 
 
+
 function closeModal() {
   eventTitleInput.classList.remove('error');
   newEventModal.style.display = 'none';
@@ -96,6 +155,8 @@ function closeModal() {
   backDrop.style.display = 'none';
   eventTitleInput.value = '';
   clicked = null;
+  
+  
   load();
 }
 
@@ -113,13 +174,12 @@ function saveEvent() {
       
     });
 
-    
-
-  
     localStorage.setItem('events', JSON.stringify(events));
+    event.preventDefault();
     closeModal();
   } else {
     eventTitleInput.classList.add('error');
+    event.preventDefault();
     
   }
 
@@ -129,6 +189,7 @@ function saveEvent() {
 function deleteEvent() {
   events = events.filter(e => e.date !== clicked);
   localStorage.setItem('events', JSON.stringify(events));
+  event.preventDefault();
   closeModal();
 }
 
@@ -138,30 +199,32 @@ function deleteEvent() {
 //   document.getElementById('calendar').style.pointerEvents = "none";
 // }
 
-function dayNull() {
-  var cal = document.getElementById("calendar");
-  cal.classList.toggle("calendarNull");
-  var t = document.getElementById("dayNull");
-  if (t.innerHTML == "取消編輯") {
-    t.innerHTML = "編輯";
-    t.style.backgroundColor = "#666";
-  } else if (t.innerHTML == "編輯") {
-    t.innerHTML = "取消編輯";
-    t.style.backgroundColor = "#d36c6c";
-  }
+// function dayNull() {
+//   var cal = document.getElementById("calendar");
+//   cal.classList.toggle("calendarNull");
+//   var t = document.getElementById("dayNull");
+//   if (t.innerHTML == "取消編輯") {
+//     t.innerHTML = "編輯";
+//     t.style.backgroundColor = "#666";
+//   } else if (t.innerHTML == "編輯") {
+//     t.innerHTML = "取消編輯";
+//     t.style.backgroundColor = "#d36c6c";
+//   }
    
-}
+// }
 
 
 function initButtons() {
   
   document.getElementById('nextButton').addEventListener('click', () => {
     nav++;
+    event.preventDefault();
     load();
   });
 
   document.getElementById('backButton').addEventListener('click', () => {
     nav--;
+    event.preventDefault();
     load();
   });
 
@@ -189,3 +252,6 @@ load();
 
 
 
+
+
+  </script>
